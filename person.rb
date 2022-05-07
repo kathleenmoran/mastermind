@@ -9,7 +9,7 @@ class Person < Player
 
   def input_to_guess(input)
     if valid_guess_input?(input)
-      Code.new(input.split('').map(&:to_int))
+      Code.new(input.split('').map(&:to_i))
     else
       print_invalid_input_message
       guess
