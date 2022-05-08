@@ -35,6 +35,6 @@ module Displayable
   end
 
   def print_code_reveal_message
-    puts "Here is the 'master code' that you were trying to break:"
+    puts "Here is the correct 'master code':"
   end
 end

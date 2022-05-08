@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require_relative 'Displayable'
 
 # either a guess of the codebreaker or the codemaker's code
