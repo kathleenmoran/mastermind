@@ -17,6 +17,19 @@ class Game
     @game_over = false
   end
 
+  def play_game
+    ROUNDS.times do |index|
+      play_round(index)
+      if @game_over
+        end_game(true)
+        break
+      end
+    end
+    end_game(false) unless @game_over
+  end
+
+  private
+
   def play_round(round)
     print_round_message(round)
     round_guess = @codebreaker.guess
@@ -29,17 +42,6 @@ class Game
     @codebreaker.prev_code = guess
     @codebreaker.prev_total_correct_spots = guess.sum_correct_spot(@master_code)
     @codebreaker.prev_total_wrong_spots = guess.sum_wrong_spot(@master_code)
-  end
-
-  def play_game
-    ROUNDS.times do |index|
-      play_round(index)
-      if @game_over
-        end_game(true)
-        break
-      end
-    end
-    end_game(false) unless @game_over
   end
 
   def end_game(outcome)

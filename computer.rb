@@ -35,6 +35,8 @@ class Computer < Player
     end
   end
 
+  private
+
   # removes permutations from the list that would not have the same pegs if the previous response were the master code
   def filter_permutations
     @permutations = @permutations.select do |permutation|

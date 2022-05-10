@@ -11,6 +11,15 @@ class Person < Player
     input_to_code(user_input, true)
   end
 
+  def make_code
+    print_input_code_message
+    user_input = gets.chomp
+    puts ''
+    input_to_code(user_input, false)
+  end
+
+  private
+
   def input_to_code(input, is_guess)
     if valid_guess_input?(input)
       Code.new(input.split('').map(&:to_i))
@@ -24,12 +33,5 @@ class Person < Player
 
   def valid_guess_input?(input)
     input.split('').all? { |val| val.to_i.to_s == val && val.to_i.between?(1, 6) } && input.split('').length == 4
-  end
-
-  def make_code
-    print_input_code_message
-    user_input = gets.chomp
-    puts ''
-    input_to_code(user_input, false)
   end
 end

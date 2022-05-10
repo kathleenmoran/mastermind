@@ -42,7 +42,7 @@ module Displayable
   end
 
   def print_code_reveal_message
-    puts "Here is the correct 'master code':"
+    puts 'Here is the correct master code:'
   end
 
   def print_input_code_message
