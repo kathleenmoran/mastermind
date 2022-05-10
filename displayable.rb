@@ -4,9 +4,6 @@
 module Displayable
   DIGIT_COLORS = { 1 => :yellow, 2 => :blue, 3 => :green, 4 => :magenta, 5 => :red, 6 => :cyan }.freeze
   BACKGROUND_COLORS = { yellow: '43', blue: '44', green: '42', magenta: '45', red: '41', cyan: '46' }.freeze
-  def print_start_game_message
-    puts "It's time to play!"
-  end
 
   def print_round_message(round)
     puts underline("Turn ##{round + 1}:")
@@ -34,14 +31,6 @@ module Displayable
 
   def color_value(value)
     color_text_background("  #{value}  ", DIGIT_COLORS[value])
-  end
-
-  def print_ask_to_play_again_message
-    puts 'Do you want to play again? (Y/N)'
-  end
-
-  def print_quit_game_message
-    puts 'Thank you for playing Mastermind!'
   end
 
   def print_invalid_message

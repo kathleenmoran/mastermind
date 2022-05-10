@@ -24,7 +24,7 @@ class Computer < Player
 
   def guess
     print_computer_guess_prompt
-    sleep 3
+    sleep 2
     if @guesses_made.zero?
       @guesses_made += 1
       FIRST_GUESS

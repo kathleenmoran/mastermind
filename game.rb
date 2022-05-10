@@ -47,6 +47,6 @@ class Game
     return if outcome
 
     print_code_reveal_message
-    puts @master_code
+    puts "#{@master_code}\n\n"
   end
 end
