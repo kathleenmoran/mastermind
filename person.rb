@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 require_relative 'displayable'
+require_relative 'codable'
 
 # user playing mastermind
-class Person < Player
+class Person
   include Displayable
+  include Codable
   def guess
     print_person_guess_prompt
     user_input = gets.chomp
@@ -32,6 +34,8 @@ class Person < Player
   end
 
   def valid_guess_input?(input)
-    input.split('').all? { |val| val.to_i.to_s == val && val.to_i.between?(1, 6) } && input.split('').length == 4
+    input.split('').all? do |val|
+      val.to_i.to_s == val && val.to_i.between?(1, MAX_CODE_VALUE) && input.split('').length == CODE_LENGTH
+    end
   end
 end

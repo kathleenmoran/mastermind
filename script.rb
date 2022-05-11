@@ -12,7 +12,7 @@ def start_game
   user_input = gets.chomp
   puts
  if user_input == "1"
-   Game.new(Computer.new, Person.new).play_game
+   Game.new(Player.new(Computer.new), Player.new(Person.new)).play_game
    ask_to_play_again
  elsif user_input == "2"
    Game.new.play_game

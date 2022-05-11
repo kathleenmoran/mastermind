@@ -2,9 +2,17 @@
 
 # the codemaker and codebreaker
 class Player
-  CODE_LENGTH = 4
-  MAX_CODE_VALUE = 6
-  def initialize() end
-  def make_code() end
-  def guess() end
+  attr_reader :type
+
+  def initialize(type)
+    @type = type
+  end
+
+  def make_code
+    type.make_code
+  end
+
+  def guess
+    type.guess
+  end
 end

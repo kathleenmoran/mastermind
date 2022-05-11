@@ -2,15 +2,16 @@
 
 require_relative 'code'
 require_relative 'displayable'
+require_relative 'codable'
 
 # the automated mastermind player
-class Computer < Player
+class Computer
   include Displayable
+  include Codable
   FIRST_GUESS = Code.new([1, 1, 2, 2])
   attr_writer :prev_code, :prev_total_correct_spots, :prev_total_wrong_spots
 
   def initialize
-    super
     @permutations = (1..MAX_CODE_VALUE).to_a.repeated_permutation(4).to_a
     @guesses_made = 0
     @prev_code = nil

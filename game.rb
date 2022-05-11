@@ -10,7 +10,7 @@ require_relative 'displayable'
 class Game
   include Displayable
   ROUNDS = 12
-  def initialize(codebreaker = Person.new, codemaker = Computer.new)
+  def initialize(codebreaker = Player.new(Person.new), codemaker = Player.new(Computer.new))
     @codebreaker = codebreaker
     @codemaker = codemaker
     @master_code = @codemaker.make_code
@@ -35,13 +35,13 @@ class Game
     round_guess = @codebreaker.guess
     puts round_guess.to_s_with_clues(@master_code)
     @game_over = true if round_guess == @master_code
-    change_prev_guess(round_guess) if @codebreaker.is_a?(Computer)
+    change_prev_guess(round_guess) if @codebreaker.type.is_a?(Computer)
   end
 
   def change_prev_guess(guess)
-    @codebreaker.prev_code = guess
-    @codebreaker.prev_total_correct_spots = guess.sum_correct_spot(@master_code)
-    @codebreaker.prev_total_wrong_spots = guess.sum_wrong_spot(@master_code)
+    @codebreaker.type.prev_code = guess
+    @codebreaker.type.prev_total_correct_spots = guess.sum_correct_spot(@master_code)
+    @codebreaker.type.prev_total_wrong_spots = guess.sum_wrong_spot(@master_code)
   end
 
   def end_game(outcome)
